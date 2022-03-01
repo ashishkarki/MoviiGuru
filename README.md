@@ -1,22 +1,18 @@
-# cra-template-tailwindcss-typescript
+# MoviiGuru
 
-A streamlined [Tailwind CSS v3.x](https://tailwindcss.com) template for [Create React App](https://github.com/facebook/create-react-app) in [TypeScript](https://www.typescriptlang.org/).
+Movie this and thats for all movie gurus within us..
 
-> This template installs and sets up [Tailwind CSS](https://tailwindcss.com) with TypeScript support.
+## References
 
-## Usage
+1. https://www.youtube.com/watch?v=jc9_Bqzy2YQ
+2. https://blog.logrocket.com/build-modal-with-react-portals/
+
+## How this project was bootstrapped.
 
 ```bash
 npx create-react-app --template tailwindcss-typescript
 ```
 
-## Credits
-
-This project was made possible thanks to the following projects.
-
-1. [GeoffSelby/cra-template-tailwindcss](https://github.com/GeoffSelby/cra-template-tailwindcss) - A streamlined Tailwind CSS template for Create React App (in JavaScript).
-2. [cra-template-typescript](https://github.com/facebook/create-react-app/tree/master/packages/cra-template-typescript) - An official TypeScript template for create-react-app.
-
-## License
+### License
 
 MIT © [Sung M. Kim](https://sung.codes)
