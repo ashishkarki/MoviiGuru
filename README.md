@@ -2,10 +2,15 @@
 
 Movie this and thats for all movie gurus within us..
 
+## TODOs
+
+1. Typings need to be improved for example `IMoviiPlus` interface can have some of its properties set as Enums like `Genre`
+
 ## References
 
 1. https://www.youtube.com/watch?v=jc9_Bqzy2YQ
 2. https://blog.logrocket.com/build-modal-with-react-portals/
+3. https://bootcamp.uxdesign.cc/using-css-modules-in-react-cc17f7c81247
 
 ## How this project was bootstrapped.
 
