@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { CSSTransition } from 'react-transition-group'
+
 import ReactPortal from '../Portal/ReactPortal'
 import styles from './Modal.module.css'
 
@@ -6,9 +8,22 @@ interface ModalProps {
   children: React.ReactNode
   isOpen: boolean
   handleClose: () => void
+  id?: string
+  className?: string
+  ariaHidden?: boolean
 }
 
-const Modal = ({ children, isOpen, handleClose }: ModalProps) => {
+const Modal = ({
+  children,
+  isOpen,
+  handleClose,
+  id = 'defaultModal',
+  className = '',
+  ariaHidden = true,
+}: ModalProps) => {
+  // ref of CSSTransition to the node that needs transitioned // which in this case is the root div of this Modal component
+  const nodeRef = React.useRef<HTMLDivElement | null>(null)
+
   /**
    * allow modal to be close when Escape key is pressed
    */
@@ -27,9 +42,12 @@ const Modal = ({ children, isOpen, handleClose }: ModalProps) => {
     }
   })
 
-  if (!isOpen) {
-    return null
-  }
+  /**
+   * this creates a non-snappy transition, so we will use CSSTransition
+   */
+  //   if (!isOpen) {
+  //     return null
+  //   }
 
   /**
    * wrap the modal's return with ReactPortal so that the modal
@@ -42,15 +60,38 @@ const Modal = ({ children, isOpen, handleClose }: ModalProps) => {
    */
   return (
     <ReactPortal wrapperElemId="portal-modal-container">
-      <div className={styles.modal}>
-        <button onClick={handleClose} className={styles.closeBtn}>
-          Close
-        </button>
+      <CSSTransition
+        in={isOpen}
+        timeout={{ enter: 0, exit: 300 }}
+        unmountOnExit
+        classNames="modal"
+        nodeRef={nodeRef}
+      >
+        <div
+          id={id}
+          className={`modal ${styles.modal} ${className}`}
+          aria-hidden={ariaHidden}
+          ref={nodeRef}
+        >
+          <button onClick={handleClose} className={styles.closeBtn}>
+            Close
+          </button>
 
-        <div className={styles.modalContent}>{children}</div>
-      </div>
+          <div className={styles.modalContent}>{children}</div>
+        </div>
+      </CSSTransition>
     </ReactPortal>
   )
 }
+/**
+ * More about the CSSTransition component:
+ * https://reactcommunity.org/react-transition-group/css-transition
+ * CSSTransition properties:
+    => in: Boolean flag that triggers the entry or exit states
+    => timeout: duration of the transition at each state (entry, exit, etc.)
+    => unmountOnExit: unmounts the component after exiting
+    => classNames: class name will be suffixed for each state (entry, exit, etc.) to give control over CSS customization
+    => nodeRef: a React reference to the DOM element that needs to transition (in this case, the root div element of the Modal component)
+ */
 
 export default Modal

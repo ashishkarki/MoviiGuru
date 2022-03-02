@@ -6,7 +6,7 @@ const apiKey = '4a9a5e40'
 
 const getAllMovies = async (limit = 20) => {
   const response = await axiosInstance.get<IOmdbSearchResponse>(
-    `?apikey=4a9a5e40&s=hello&type=movie`,
+    `?apikey=${apiKey}&s=hello&type=movie`,
   )
   // console.log('response', response)
 

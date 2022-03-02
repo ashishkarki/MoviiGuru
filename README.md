@@ -2,6 +2,10 @@
 
 Movie this and thats for all movie gurus within us..
 
+## TODOs
+
+1. Typings need to be improved for example `IMoviiPlus` interface can have some of its properties set as Enums like `Genre`
+
 ## References
 
 1. https://www.youtube.com/watch?v=jc9_Bqzy2YQ
